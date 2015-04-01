@@ -47,6 +47,24 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         }
       }
     })
+
+    .state('app.take-attendance', {
+      url: "/take-attendance",
+      views: {
+        'menuContent': {
+          templateUrl: "templates/take-attendance.html"
+        }
+      }
+    })
+
+    .state('app.memeber-attendance', {
+      url: "/memeber-attendance",
+      views: {
+        'menuContent': {
+          templateUrl: "templates/member-attendance.html"
+        }
+      }
+    })
        .state('app.activity', {
       url: "/activities/:actID",
       views: {
