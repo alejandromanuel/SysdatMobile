@@ -7,33 +7,90 @@ angular.module('SysdatApp', [])
   $scope.temp=[];
   $scope.parametro=$stateParams.actID;
 
-  // Create the login modal that we will use later
+  //
+
+  // Create the login modal for the download activities login
   $ionicModal.fromTemplateUrl('templates/login.html', {
     scope: $scope
   }).then(function(modal) {
     $scope.modal = modal;
   });
 
-  // Triggered in the login modal to close it
+//Create the login modal for the error login message
+  $ionicModal.fromTemplateUrl('templates/login-fail.html', {
+    scope: $scope
+  }).then(function(error_modal) {
+    $scope.error_modal = error_modal;
+  });
+
+  //Create the login modal for the error login message
+  $ionicModal.fromTemplateUrl('templates/upload-login.html', {
+    scope: $scope
+  }).then(function(upload_modal) {
+    $scope.upload_modal = upload_modal;
+  });
+
+  // Triggered in the download login modal to close it
   $scope.closeLogin = function() {
     $scope.modal.hide();
   };
 
-  // Open the login modal
+  // Open the download activities login modal
   $scope.login = function() {
     $scope.modal.show();
   };
 
-  // Perform the login action when the user submits the login form
+  // Perform the login action when the user submits the login form when click download activities.
   $scope.doLogin = function() {
-    console.log('Doing login', $scope.loginData);
-
-    // Simulate a login delay. Remove this and replace with your login
-    // code if using a login system
-    $timeout(function() {
+    //console.log('Doing login', $scope.loginData);
+    if($scope.loginData.password == "1234" && $scope.loginData.username== "Juan Morales"){
+      
+      $scope.downloadActivities();
       $scope.closeLogin();
-    }, 1000);
+    }
+    else{
+      $scope.LoginFail();
+      
+    }
+
   };
+
+
+// Used by the login fail modal
+  $scope.LoginFail= function(){
+    $scope.error_modal.show();
+  };
+
+  $scope.closeLoginFail = function() {
+    $scope.error_modal.hide();
+  };
+
+//Used by the upload login modal
+  $scope.upload_closeLogin = function() {
+    $scope.upload_modal.hide();
+  };
+
+  // Open the download activities login modal
+  $scope.upload_login = function() {
+    $scope.upload_modal.show();
+  };
+
+  // Perform the login action when the user submits the login form when click download activities.
+  $scope.upload_doLogin = function() {
+    //console.log('Doing login', $scope.loginData);
+    if($scope.loginData.password == "1234" && $scope.loginData.username== "Juan Morales"){
+      
+      //aqui llamar la funcion de upload
+      $scope.upload_closeLogin();
+    }
+    else{
+      $scope.LoginFail();
+      
+    }
+
+  };
+
+
   
     $scope.downloadActivities = function(){
      //// STEP ONE------------------------------------------>

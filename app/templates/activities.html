@@ -3,7 +3,7 @@
     <ion-list>
      <ion-item class="button-red"> <i class="icon ion-calendar"></i>  <b>Activities Available </b> </ion-item>
      <ion-item class="item-icon-left" ng-repeat="activity in activities" href={{"#/app/activities/"+activity.activity_id}}>
-       <i class="icon ion-arrow-right-b"></i> {{activity.title}}
+       <i class="icon ion-arrow-right-b"></i> {{activity.title +" | Date: "+ activity.start_date}}
       </ion-item>
     </ion-list>
   </ion-content>
