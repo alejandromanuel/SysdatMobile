@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers'])
+angular.module('starter', ['ionic', 'SysdatApp'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -43,7 +43,26 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       views: {
         'menuContent': {
           templateUrl: "templates/activities.html",
-          controller: 'Ctrl'
+          controller: 'AppCtrl'
+        }
+      }
+    })
+
+    .state('app.take-attendance', {
+      url: "/take-attendance/:actID",
+      views: {
+        'menuContent': {
+          templateUrl: "templates/take-attendance.html",
+          controller:'ActCtrl'
+        }
+      }
+    })
+
+    .state('app.memeber-attendance', {
+      url: "/memeber-attendance",
+      views: {
+        'menuContent': {
+          templateUrl: "templates/member-attendance.html"
         }
       }
     })
@@ -53,6 +72,24 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         'menuContent': {
           templateUrl: "templates/activity.html",
           controller: 'ActCtrl'
+        }
+      }
+    })
+         .state('app.member', {
+      url: "/member/:actID",
+      views: {
+        'menuContent': {
+          templateUrl: "templates/member.html",
+          controller: 'AppCtrl'
+        }
+      }
+    })
+         .state('app.nonmember', {
+      url: "/nonmember",
+      views: {
+        'menuContent': {
+          templateUrl: "templates/nonmember.html",
+          controller: 'AppCtrl'
         }
       }
     });

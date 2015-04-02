@@ -1,0 +1,44 @@
+
+<ion-view view-title="Member Attendance">
+  <ion-content>
+    
+  <div class="list card">
+
+    <div class="item item-avatar">
+  
+  
+      Search: <input class="form-control" ng-model="searchText">
+    </div>
+
+    <div class="item item-body">
+ 
+    
+      <p>
+        <div class="card">
+
+          <div class="item item-text-wrap" ng-repeat="user in users | filter:searchText">
+
+            <h2>{{user.first_name+" "+user.second_last_name}}</h2>
+             {{ "Member Code: "+ user.member_code}}<br>
+             {{"Date of Birth: "+user.date_of_birth}} <br><br>
+
+           <a  align="right" class="button icon-left ion-checkmark-round button-positive" ng-click={{"addMember(user.k12_student_id)"}} ng-show="desactivate(user.k12_student_id)" href={{"#/app/take-attendance/"+parametro}}>Confirm</a>
+
+
+           <button  align="right" class="button icon-left ion-checkmark-round button-positive" ng-disabled="true" ng-hide="desactivate(user.k12_student_id)" >Confirm</button>
+         </div>
+
+       
+      </div>
+      </p>
+  
+    </div>
+
+
+  </div>
+    
+  </ion-content>
+</ion-view>
+
+
+
