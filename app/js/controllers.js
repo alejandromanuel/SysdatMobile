@@ -4,6 +4,7 @@ angular.module('SysdatApp', [])
   
   // Form data for the login modal
   $scope.loginData = {};
+
   $scope.temp=[];
   $scope.parametro=$stateParams.actID;
 
@@ -32,27 +33,31 @@ angular.module('SysdatApp', [])
 
   // Triggered in the download login modal to close it
   $scope.closeLogin = function() {
+    //$scope.clearData();
     $scope.modal.hide();
+
   };
 
   // Open the download activities login modal
   $scope.login = function() {
+    $scope.loginData={};
     $scope.modal.show();
   };
 
   // Perform the login action when the user submits the login form when click download activities.
   $scope.doLogin = function() {
     //console.log('Doing login', $scope.loginData);
-    if($scope.loginData.password == "1234" && $scope.loginData.username== "Juan Morales"){
+    
+    if($scope.loginData.password == "1234" && $scope.loginData.username== "Juan"){
       
       $scope.downloadActivities();
       $scope.closeLogin();
-    }
-    else{
-      $scope.LoginFail();
       
     }
-
+    else {
+        $scope.LoginFail();    
+    }
+    
   };
 
 
@@ -67,11 +72,14 @@ angular.module('SysdatApp', [])
 
 //Used by the upload login modal
   $scope.upload_closeLogin = function() {
+    //$scope.clearData();
     $scope.upload_modal.hide();
+    
   };
 
   // Open the download activities login modal
   $scope.upload_login = function() {
+    $scope.loginData={};
     $scope.upload_modal.show();
   };
 
@@ -89,7 +97,7 @@ angular.module('SysdatApp', [])
     }
 
   };
-
+  
 
   
     $scope.downloadActivities = function(){

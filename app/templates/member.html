@@ -17,11 +17,11 @@
  
     
       <p>
-        <div class="card">
+        <div class="card ">
 
-          <div class="item item-text-wrap" ng-repeat="user in users | filter:searchText">
+          <div class="item item-text-wrap card-member-custom" ng-repeat="user in users | filter:searchText">
 
-            <h2>{{user.first_name+" "+user.second_last_name}}</h2>
+            <h2><b>{{user.first_name+" "+user.second_last_name}}<b></h2>
              {{ "Member Code: "+ user.member_code}}<br>
              {{"Date of Birth: "+user.date_of_birth}} <br><br>
 

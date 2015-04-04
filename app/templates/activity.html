@@ -15,8 +15,8 @@
   		<p>
   			<H3>Date: {{activity.start_date}} </H3>
   			<h3>Place: Mayaguez </h3>
-  			<div class="card">
-  				<div class="item item-text-wrap">
+  			<div class="card card">
+  				<div class="item item-text-wrap card-custom">
   					<h2>Activity Info:</h2>
     				This is a basic Card which contains an item that has wrapping text.
  				 </div>
@@ -27,12 +27,12 @@
 
   	<div class="item tabs tabs-secondary tabs-icon-left">
   		
-  		<a class="tab-item " href="#" ng-click="upload_login()">
+  		<a class="tab-item " href="#" ng-click="upload_login()" style="font-size: 14px">
   			<i class="icon ion-upload"></i>
   			Upload Info
   		</a>
   		
-  		<a class="tab-item" href={{"#/app/take-attendance/"+activity.activity_id}}>
+  		<a class="tab-item" href={{"#/app/take-attendance/"+activity.activity_id}} style="font-size: 14px">
   			<i class="icon ion-checkmark-circled"> </i>
   			Take Attendance
   		</a>
