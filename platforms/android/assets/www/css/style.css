@@ -1,1 +1,23 @@
 /* Empty. Add your own CSS if you like */
+
+.custom-letters{
+	color: #ffffff;
+}
+
+.custom-title{
+	color:  #777777;
+}
+.button-blue{
+	background-color: #086EA0;
+	color: #ffffff;
+}
+.button-red{
+	background-color: #B04B4E;
+	color: #ffffff;
+}
+.card-custom{
+	background-color: #A6D2F6; /* #A6D2F6, */
+}
+.card-member-custom{
+	background-color: #E6FDE5;
+}

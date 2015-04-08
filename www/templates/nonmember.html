@@ -1,33 +1,36 @@
 <ion-view view-title="Non-Member Attendance">
-  <ion-content>
-    
-  <div class="list card">
+<ion-content>
 
-    <div class="item item-body">
+<div class="list card">
+<a class="button button-clear button-positive" href={{"#/app/take-attendance/"+parametro}}>  <i class="icon ion-android-exit"></i> Exit</a>
  
-    
-   
-        <div class="card">
 
-           <div class="list list-inset">
-  <label class="item item-input">
-    <input type="text" placeholder="First Name" ng-model="nonfirst_name">
-  </label>
-  <label class="item item-input">
-    <input type="text" placeholder="Last Name" ng-model="nonlast_name">
-  </label>
-</div>
-  <a align="right" class="button icon-left ion-checkmark-round button-positive" ng-click="newUser(nonfirst_name,nonlast_name)" href={{"#/app/take-attendance/"+parametro}}>Confirm</a>
-       
-      </div>
+  <div class="item item-body">
+
+    <div class="item " style="background-color:#FFE7E7">
       
-  
+      <h2 style="font-size:18px;">Enter the Non-Member info </h2>
     </div>
 
+     <div class="list list-inset">
+      <label class="item item-input">
+        <input type="text" placeholder="First Name" ng-model="nonfirst_name">
+      </label>
+      <label class="item item-input">
+        <input type="text" placeholder="Last Name" ng-model="nonlast_name">
+      </label>
+    </div>
+    <a align="right" class="button icon-left ion-checkmark-round button-positive" ng-click="newUser(nonfirst_name,nonlast_name)" href={{"#/app/take-attendance/"+parametro}}>Confirm</a>
 
-  </div>
-    
-  </ion-content>
+
+
+  
+</div>
+
+
+</div>
+
+</ion-content>
 </ion-view>
 
 

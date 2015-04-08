@@ -7,7 +7,7 @@
   	<div class="item item-avatar">
   		<img src="img/icon_activity_blu.png">
   		<h2>{{activity.title}}</h2>
-  		<p>Thrust Area: IEG</p>
+  		
   	</div>
 
   	<div class="item item-body">
@@ -17,8 +17,8 @@
   			<h3>Place: Mayaguez </h3>
   			<div class="card card">
   				<div class="item item-text-wrap card-custom">
-  					<h2>Activity Info:</h2>
-    				This is a basic Card which contains an item that has wrapping text.
+  				
+    				To take attendance select the "Take Attendance" button below. Remember that to finish the attendance go back and use "crest" as the passcode. Go to the attendance sheet to view a summary and to upload the information.
  				 </div>
 			</div>
   		</p>
@@ -27,9 +27,9 @@
 
   	<div class="item tabs tabs-secondary tabs-icon-left">
   		
-  		<a class="tab-item " href="#" ng-click="upload_login()" style="font-size: 14px">
+  		<a class="tab-item " href={{"#/app/report/"+activity.activity_id}} style="font-size: 14px">
   			<i class="icon ion-upload"></i>
-  			Upload Info
+  			Attendance Sheet
   		</a>
   		
   		<a class="tab-item" href={{"#/app/take-attendance/"+activity.activity_id}} style="font-size: 14px">
@@ -40,7 +40,8 @@
   	</div>
 
   </div>
-    
+     <a class="button button-clear button-positive" href="#/app/activities">  <i class="icon ion-android-arrow-back"></i> Back</a>
+ 
   </ion-content>
 </ion-view>
 

@@ -1,0 +1,50 @@
+
+<ion-view view-title="Report" ng-init="confirmedUsers()">
+  <ion-content>
+    
+  <div class="list card" align="left">
+
+    <div class="item item-body" >
+  
+      
+    <a class="tab-item " ng-click="upload_login" style="font-size: 18px">
+        <i class="icon ion-upload"></i>
+        Upload
+      </a>
+
+ 
+    </div>
+
+  
+
+ <legend>Members</legend>
+    <div class="item item-body" >
+    <!--upload_login() -->
+      <div class="card" ng-repeat="confirm in confStudents">
+         
+        {{confirm.k12_student_id+"-"+ confirm.first_name +" "+confirm.last_name + "-"+confirm.member_code }} <br>
+      <button class="button button-clear button-positive" ng-click={{"removeUser(confirm.k12_student_id)"}} >  <i class="icon ion-close-circled"></i> Remove</button>
+      </div>
+      </div>
+
+       <legend>Non Members</legend>
+    <div class="item item-body" >
+    <!--upload_login() -->
+      <div class="card" ng-repeat="n in non">
+         
+        {{ n.first_name +" "+n.last_name }} <br>
+     
+      </div>
+      </div>
+ 
+
+
+
+  </div>
+    
+      <a class="button button-clear button-positive" href="#/app/init">  <i class="icon ion-android-exit"></i><strong>Exit</strong> </a>
+  </ion-content>
+</ion-view>
+
+
+

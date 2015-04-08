@@ -1,0 +1,46 @@
+
+<ion-view view-title="Member Attendance">
+  <ion-content>
+    
+  <div class="list card">
+<a class="button button-clear button-positive" href={{"#/app/take-attendance/"+parametro}}>  <i class="icon ion-android-exit"></i> Exit</a>
+ 
+
+    <label class="item item-input">
+      <i class="icon ion-search placeholder-icon"></i>
+      <input type="text" placeholder="CREST Member ID" ng-model="searchText">
+      
+    </label>
+
+    
+
+    <div class="item item-body">
+ 
+    
+      <p>
+        <div class="card ">
+
+          <div class="item item-text-wrap card-member-custom" ng-repeat="user in users | filter:searchText" ng-show="searchText==user.member_code">
+
+            <h2><b>{{user.first_name+" "+user.second_last_name}}<b></h2>
+             {{ "Member Code: "+ user.member_code}}<br>
+             {{"Date of Birth: "+user.date_of_birth}} <br><br>
+   <a  align="right" class="button icon-left ion-checkmark-round button-positive" ng-click={{"addMember(user.k12_student_id)"}} ng-disabled={{"desactivate(user.k12_student_id)"}} href={{"#/app/take-attendance/"+parametro}}>Confirm</a>
+
+
+         </div>
+
+       
+      </div>
+      </p>
+  
+    </div>
+
+
+  </div>
+    
+  </ion-content>
+</ion-view>
+
+
+

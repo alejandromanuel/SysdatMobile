@@ -92,6 +92,14 @@ angular.module('starter', ['ionic', 'SysdatApp'])
           controller: 'AppCtrl'
         }
       }
+    }) .state('app.report', {
+      url: "/report/:actID",
+      views: {
+        'menuContent': {
+          templateUrl: "templates/report.html",
+          controller: 'AppCtrl'
+        }
+      }
     });
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/init');
