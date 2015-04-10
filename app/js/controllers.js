@@ -219,18 +219,18 @@ angular.module('SysdatApp', [])
   };
 
 
-  $scope.newUser = function(f, l) {
+  $scope.newUser = function(f, l,act) {
  
 
       if(window.localStorage['NonMember']!=""){
         $scope.temp=JSON.parse(window.localStorage['NonMember'] || '{}');
-        $scope.temp.push({first_name:f, last_name:l});
+        $scope.temp.push({first_name:f, last_name:l, activity:act});
      // [].push.apply($scope.temp,{activity: $stateParams.actID, user:num} );
        window.localStorage['NonMember']= JSON.stringify($scope.temp);
 
       }
       else{
-         window.localStorage['NonMember']= JSON.stringify([{first_name: f, last_name:l}]);
+         window.localStorage['NonMember']= JSON.stringify([{first_name: f, last_name:l, activity:act}]);
 
       }
   };
@@ -240,7 +240,7 @@ angular.module('SysdatApp', [])
      
 
         $scope.confirms=JSON.parse(window.localStorage['StudentConfirmed'] || '{}');
-
+        $scope.nonconfirms=JSON.parse(window.localStorage['NonMember'] || '{}');
         $scope.confStudents=[];
         $scope.confNonStudents=[];
 
@@ -255,6 +255,18 @@ angular.module('SysdatApp', [])
                               
                                   }
                            }
+
+   
+        }
+         for (var h = 0; h <$scope.nonconfirms.length ; h++) {
+           
+          
+                                  if($scope.nonconfirms[h].activity==$scope.parametro){
+                                    
+                                     $scope.confNonStudents.push($scope.nonconfirms[h]);
+                              
+                                  }
+                         
 
    
         }

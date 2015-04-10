@@ -4,43 +4,43 @@
     
   <div class="list card">
 
-    <div class="item item-avatar">
-      <img src="img/icon_activity_blu.png">
-      <h2>{{activity.title}}</h2>
-      
-    </div>
+  	<div class="item item-avatar">
+  		<img src="img/icon_activity_blu.png">
+  		<h2>{{activity.title}}</h2>
+  		
+  	</div>
 
-    <div class="item item-body">
-    
-      <p>
-        <H3>Date: {{activity.start_date}} </H3>
-        <h3>Place: Mayaguez </h3>
-        <div class="card card">
-          <div class="item item-text-wrap card-custom">
-          
-            To take attendance select the "Take Attendance" button below. Remember that to finish the attendance go back and use "crest" as the passcode. Go to the attendance sheet to view a summary and to upload the information.
-         </div>
-      </div>
-      </p>
+  	<div class="item item-body">
+  	
+  		<p>
+  			<H3>Date: {{activity.start_date}} </H3>
+  			<h3>Place: Mayaguez </h3>
+  			<div class="card card">
+  				<div class="item item-text-wrap card-custom">
+  				
+    				To take attendance select the "Take Attendance" button below. Remember that to finish the attendance go back and use "crest" as the passcode. Go to the attendance sheet to view a summary and to upload the information.
+ 				 </div>
+			</div>
+  		</p>
   
-    </div>
+  	</div>
 
-    <div class="item tabs tabs-secondary tabs-icon-left">
-      
-      <a class="tab-item " href={{"#/app/report/"+activity.activity_id}} style="font-size: 14px">
-        <i class="icon ion-upload"></i>
-        Attendance Sheet
-      </a>
-      
-      <a class="tab-item" href={{"#/app/take-attendance/"+activity.activity_id}} style="font-size: 14px">
-        <i class="icon ion-checkmark-circled"> </i>
-        Take Attendance
-      </a>
-      <br><br>
-    </div>
+  	<div class="item tabs tabs-secondary tabs-icon-left">
+  		
+  		<a class="tab-item " href={{"#/app/report/"+activity.activity_id}} style="font-size: 14px">
+  			<i class="icon ion-upload"></i>
+  			Attendance Sheet
+  		</a>
+  		
+  		<a class="tab-item" href={{"#/app/take-attendance/"+activity.activity_id}} style="font-size: 14px">
+  			<i class="icon ion-checkmark-circled"> </i>
+  			Take Attendance
+  		</a>
+  		<br><br>
+  	</div>
 
   </div>
-     <a class="button button-clear button-positive" href="#/app/activities">  <i class="icon ion-android-exit"></i> Exit</a>
+     <a class="button button-clear button-positive" href="#/app/activities">  <i class="icon ion-android-arrow-back"></i> Back</a>
  
   </ion-content>
 </ion-view>

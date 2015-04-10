@@ -8,7 +8,7 @@ angular.module('SysdatApp', [])
 
   $scope.temp=[];
   $scope.parametro=$stateParams.actID;
-  //$scope.activity=JSON.parse(window.localStorage['Activities'] || '{}');
+  $scope.activity=JSON.parse(window.localStorage['Activities'] || '{}');
   $scope.confirms=JSON.parse(window.localStorage['StudentConfirmed'] || '{}');
   $scope.non=JSON.parse(window.localStorage['NonMember'] || '{}');
   $scope.userssystem=JSON.parse(window.localStorage['Users'] || '{}');
@@ -60,12 +60,6 @@ angular.module('SysdatApp', [])
       $scope.closeLogin();
       
     }
-    else if($scope.loginData.password == "3" && $scope.loginData.username== "3"){
-
-      $scope.downloadActivities(2);
-      
-      $scope.closeLogin();
-    }
     else if($scope.loginData.password == "crest" && $scope.loginData.username== "crest"){
 
         window.location.href = "#/app/init" ;
@@ -116,9 +110,15 @@ angular.module('SysdatApp', [])
     }
 
   };
+
+  //Initialize values in this view from the local storage.
+  $scope.initiliaze = function() {
+ $scope.activities = JSON.parse(window.localStorage['Activities'] || '{}');
+     $scope.users = JSON.parse(window.localStorage['Users'] || '{}');
+  };
   
 
-  
+  // download activities from server, if server is not connected it will use the local values.
     $scope.downloadActivities = function(num){
       if(num==1){
      //// STEP ONE------------------------------------------>
@@ -168,6 +168,7 @@ angular.module('SysdatApp', [])
    //     alert("ERROR: Request error");
    // });
 };
+
     $scope.resetInfo = function() {
       window.localStorage['NonMember']= "";
       window.localStorage['StudentConfirmed']="";
@@ -177,14 +178,24 @@ angular.module('SysdatApp', [])
 
 
   };
-
+     //add new member to the array
      $scope.addMember = function(num) {
+       $scope.dec=false;
        
       if(window.localStorage['StudentConfirmed']!=""){
-        $scope.temp=JSON.parse(window.localStorage['StudentConfirmed'] || '{}');
-       $scope.temp.push({activity: $stateParams.actID, user:num});
+           $scope.temp=JSON.parse(window.localStorage['StudentConfirmed'] || '{}');
+           for (var i = 0; i < $scope.temp.length; i++) {
+         if($scope.temp[i].activity==$stateParams.actID&&$scope.temp[i].user==num){
+             $scope.dec=true;
+         }
+       };
+        if(!$scope.dec){
+           $scope.temp.push({activity: $stateParams.actID, user:num});
+           window.localStorage['StudentConfirmed']= JSON.stringify($scope.temp);
+        }
+       
      // [].push.apply($scope.temp,{activity: $stateParams.actID, user:num} );
-       window.localStorage['StudentConfirmed']= JSON.stringify($scope.temp);
+       
 
       }
       else{
@@ -192,6 +203,7 @@ angular.module('SysdatApp', [])
 
       }
     };
+    //desactivate the button in the members list
      $scope.desactivate = function(id) {
  
        $scope.temp1=JSON.parse(window.localStorage['StudentConfirmed'] || '{}');
@@ -207,44 +219,60 @@ angular.module('SysdatApp', [])
   };
 
 
-  $scope.newUser = function(f, l) {
+  $scope.newUser = function(f, l,act) {
  
 
       if(window.localStorage['NonMember']!=""){
         $scope.temp=JSON.parse(window.localStorage['NonMember'] || '{}');
-        $scope.temp.push({first_name:f, last_name:l});
+        $scope.temp.push({first_name:f, last_name:l, activity:act});
      // [].push.apply($scope.temp,{activity: $stateParams.actID, user:num} );
        window.localStorage['NonMember']= JSON.stringify($scope.temp);
 
       }
       else{
-         window.localStorage['NonMember']= JSON.stringify([{first_name: f, last_name:l}]);
+         window.localStorage['NonMember']= JSON.stringify([{first_name: f, last_name:l, activity:act}]);
 
       }
   };
 
-
+    //list of users that click confirm
     $scope.confirmedUsers = function() {
-      
+     
+
         $scope.confirms=JSON.parse(window.localStorage['StudentConfirmed'] || '{}');
+        $scope.nonconfirms=JSON.parse(window.localStorage['NonMember'] || '{}');
         $scope.confStudents=[];
         $scope.confNonStudents=[];
 
 
-
+       // alert("entre");
         for (var i = 0; i <$scope.userssystem.length ; i++) {
               for (var j = 0; j <$scope.confirms.length ; j++) {
           
                                   if($scope.confirms[j].user==$scope.userssystem[i].k12_student_id&&$scope.confirms[j].activity==$scope.parametro){
-
+                                    
                                      $scope.confStudents.push($scope.userssystem[i]);
+                              
                                   }
                            }
 
    
         }
+         for (var h = 0; h <$scope.nonconfirms.length ; h++) {
+           
+          
+                                  if($scope.nonconfirms[h].activity==$scope.parametro){
+                                    
+                                     $scope.confNonStudents.push($scope.nonconfirms[h]);
+                              
+                                  }
+                         
 
+   
+        }
+        //alert(JSON.stringifu($scope.confirms));
 };
+    //Remove user from the list array
 
     $scope.removeUser = function(id) {
       

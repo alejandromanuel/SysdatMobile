@@ -85,7 +85,7 @@ angular.module('starter', ['ionic', 'SysdatApp'])
       }
     })
          .state('app.nonmember', {
-      url: "/nonmember",
+      url: "/nonmember/:actID",
       views: {
         'menuContent': {
           templateUrl: "templates/nonmember.html",
